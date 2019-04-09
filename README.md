@@ -1,53 +1,46 @@
-# Node-RED
+Node-RED IBM Cloud Starter Application
+====================================
 
-http://nodered.org
+### Node-RED on IBM Cloud
 
-[![Build Status](https://travis-ci.org/node-red/node-red.svg)](https://travis-ci.org/node-red/node-red)
-[![Coverage Status](https://coveralls.io/repos/node-red/node-red/badge.svg?branch=master)](https://coveralls.io/r/node-red/node-red?branch=master)
+This repository is an example Node-RED application that can be deployed into
+IBM Cloud with only a couple clicks. Try it out for yourself right now by clicking:
 
-A visual tool for wiring the Internet of Things.
+[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/waleeds79/ras-node.git)
 
-![Node-RED: A visual tool for wiring the Internet of Things](http://nodered.org/images/node-red-screenshot.png)
+### How does this work?
 
-## Quick Start
+When you click the button, you are taken to IBM Cloud where you get a pick a name
+for your application at which point the platform takes over, grabs the code from
+this repository and gets it deployed.
 
-Check out http://nodered.org/docs/getting-started/ for full instructions on getting
-started.
+It will automatically create an instance of the Cloudant service and bind it to
+your app. This is where your Node-RED instance will store its data.
 
-1. `sudo npm install -g --unsafe-perm node-red`
-2. `node-red`
-3. Open <http://localhost:1880>
+When you first access the application, you'll be asked to set some security options
+to ensure your flow editor remains secure from unauthorised access.
 
-## Getting Help
+It includes a set of default flows that are automatically deployed the first time
+Node-RED runs.
 
-More documentation can be found [here](http://nodered.org/docs).
+### Customising Node-RED
 
-For further help, or general discussion, please use the [Node-RED Forum](https://discourse.nodered.org) or [slack team](https://nodered.org/slack).
+This repository is here to be cloned, modified and re-used to allow anyone create
+their own Node-RED based application that can be quickly deployed to IBM Cloud.
 
-## Developers
+The default flows are stored in the `defaults` directory in the file called `flow.json`.
+When the application is first started, this flow is copied to the attached Cloudant
+instance. When a change is deployed from the editor, the version in cloudant will
+be updated - not this file.
 
-The main Node-RED modules are maintained as a monorepo on [GitHub](https://github.com/node-red/node-red).
+The web content you get when you go to the application's URL is stored under the
+`public` directory.
 
-## Contributing
+Additional nodes can be added to the `package.json` file and all other Node-RED
+configuration settings can be set in `bluemix-settings.js`.
 
-Before raising a pull-request, please read our
-[contributing guide](https://github.com/node-red/node-red/blob/master/CONTRIBUTING.md).
+If you do clone this repository, make sure you update this `README.md` file to point
+the `Deploy to IBM Cloud` button at your repository.
 
-This project adheres to the [Contributor Covenant 1.4](http://contributor-covenant.org/version/1/4/).
- By participating, you are expected to uphold this code. Please report unacceptable
- behavior to any of the project's core team at team@nodered.org.
-
-## Authors
-
-Node-RED is a project of the [JS Foundation](http://js.foundation).
-
-It was created by [IBM Emerging Technology](https://www.ibm.com/blogs/emerging-technology/).
-
-* Nick O'Leary [@knolleary](http://twitter.com/knolleary)
-* Dave Conway-Jones [@ceejay](http://twitter.com/ceejay)
-
-
-
-## Copyright and license
-
-Copyright JS Foundation and other contributors, http://js.foundation under [the Apache 2.0 license](LICENSE).
+If you want to change the name of the Cloudant instance that gets created, the memory
+allocated to the application or other deploy-time options, have a look in `manifest.yml`.
